@@ -9,7 +9,7 @@ use Carp;
 
 {
     no strict "vars";
-    $VERSION = '0.01';
+    $VERSION = '0.02';
     @EXPORT  = qw< by_oid find_next_oid oid_encode >;
 
     if ($] < 5.008) {
@@ -58,7 +58,7 @@ sub find_next_oid {
     $req_oid   ||= "";
     $walk_base ||= "";
 
-    my ($first_idx, $req_oid_idx);
+    my ($first_idx, $next_oid_idx);
 
     for my $i (0 .. $#{$oid_list}) {
         # check if we are still within the given context, if given any
@@ -69,20 +69,19 @@ sub find_next_oid {
 
         # exact match of the requested entry
         if ($oid_list->[$i] eq $req_oid) {
-            $req_oid_idx = $i + 1;
+            $next_oid_idx = $i + 1;
             last
         }
         # prefix match of the requested entry
         elsif (index($oid_list->[$i], $req_oid) == 0) {
-            $req_oid_idx = $i;
+            $next_oid_idx = $i;
             last
         }
     }
 
-    # get the entry following the requested one, or the first
-    # from within the context
-    my $next_oid = defined $req_oid_idx
-                 ? $oid_list->[$req_oid_idx]
+    # get the entry following the requested one
+    my $next_oid = (defined $next_oid_idx and $next_oid_idx < $#{$oid_list})
+                 ? $oid_list->[$next_oid_idx]
                  : "NONE";
 
     # check that the resulting OID is still within context
