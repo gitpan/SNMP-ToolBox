@@ -7,7 +7,7 @@ build_requires:
 configure_requires:
   Module::Build: 0.38
 dynamic_config: 1
-generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.110930001'
+generated_by: 'Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -16,7 +16,7 @@ name: SNMP-ToolBox
 provides:
   SNMP::ToolBox:
     file: lib/SNMP/ToolBox.pm
-    version: 0.02
+    version: 0.03
 requires:
   Carp: 0
   Exporter: 0
@@ -24,4 +24,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: https://github.com/maddingue/SNMP-ToolBox
-version: 0.02
+version: 0.03

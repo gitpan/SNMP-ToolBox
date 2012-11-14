@@ -9,7 +9,7 @@ use Carp;
 
 {
     no strict "vars";
-    $VERSION = '0.02';
+    $VERSION = '0.03';
     @EXPORT  = qw< by_oid find_next_oid oid_encode >;
 
     if ($] < 5.008) {
@@ -31,7 +31,7 @@ sub _by_oid_classical ($$) {
     my (undef, @b) = split /\./, $_[1];
     my $n = $#a > $#b ? $#a : $#b;
     my $v = 0;
-    $v ||= $a[$_] <=> $b[$_], $v && return $v for 0 .. $n;
+    $v ||= ($a[$_]||0) <=> ($b[$_]||0), $v && return $v for 0 .. $n;
     return $v
 }
 
@@ -80,7 +80,7 @@ sub find_next_oid {
     }
 
     # get the entry following the requested one
-    my $next_oid = (defined $next_oid_idx and $next_oid_idx < $#{$oid_list})
+    my $next_oid = (defined $next_oid_idx and $next_oid_idx <= $#{$oid_list})
                  ? $oid_list->[$next_oid_idx]
                  : "NONE";
 
@@ -109,7 +109,7 @@ SNMP::ToolBox - Set of SNMP-related utilities
 
 =head1 VERSION
 
-Version 0.01
+Version 0.03
 
 
 =head1 SYNOPSIS

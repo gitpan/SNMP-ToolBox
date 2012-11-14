@@ -4,7 +4,7 @@
       "Sebastien Aperghis-Tramoni <sebastien@aperghis.net>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.38, CPAN::Meta::Converter version 2.110930001",
+   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "perl_5"
    ],
@@ -16,7 +16,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Test::More" : 0
+            "Test::More" : "0"
          }
       },
       "configure" : {
@@ -26,16 +26,16 @@
       },
       "runtime" : {
          "requires" : {
-            "Carp" : 0,
-            "Exporter" : 0,
-            "parent" : 0
+            "Carp" : "0",
+            "Exporter" : "0",
+            "parent" : "0"
          }
       }
    },
    "provides" : {
       "SNMP::ToolBox" : {
          "file" : "lib/SNMP/ToolBox.pm",
-         "version" : "0.02"
+         "version" : "0.03"
       }
    },
    "release_status" : "stable",
@@ -47,5 +47,5 @@
          "url" : "https://github.com/maddingue/SNMP-ToolBox"
       }
    },
-   "version" : "0.02"
+   "version" : "0.03"
 }
